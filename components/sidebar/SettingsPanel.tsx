@@ -34,10 +34,12 @@ export default function SettingsPanel() {
         <Button variant="outline">Settings</Button>
       </SheetTrigger>
 
-      <SheetContent side="right" className="space-y-6 p-5">
+      <SheetContent side="left" className="space-y-6 p-5 w-52! md:w-80!">
         <SheetTitle className="border-gray-300 border-2 p-2 rounded-lg">
           Settings
         </SheetTitle>
+
+             
 
         {/* Font Select */}
         <div className="space-y-2">
@@ -47,8 +49,8 @@ export default function SettingsPanel() {
               <SelectValue placeholder="Select font" />
             </SelectTrigger>
             <SelectContent>
-              <SelectItem value="font-amiri">Amiri</SelectItem>
-              <SelectItem value="font-scheherazade">Scheherazade</SelectItem>
+              <SelectItem className="p-2" value="font-amiri">Amiri</SelectItem>
+              <SelectItem className="p-2" value="font-scheherazade">Scheherazade</SelectItem>
             </SelectContent>
           </Select>
         </div>

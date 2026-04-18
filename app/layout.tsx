@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import AppSidebar from "@/components/AppSidebar";
+
 import { SettingsProvider } from "@/context/SettingsContext";
+import AppSidebar from "@/components/sidebar/AppSidebar";
+import MobileSidebar from "@/components/sidebar/MobileSidebar";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -18,7 +20,6 @@ export const metadata: Metadata = {
   title: "Quran App",
   description: "Quran Web Application",
 };
-
 export default function RootLayout({
   children,
 }: {
@@ -36,14 +37,27 @@ export default function RootLayout({
         />
       </head>
 
-      <body className="h-screen flex">
+      <body className="h-screen flex flex-col md:flex-row">
+
+      
         <SettingsProvider>
-          <div className="hidden md:block">
-            <AppSidebar />
+
+          {/* Desktop Sidebar */}
+          <AppSidebar />
+
+          {/* Mobile Top Bar */}
+          <div className="md:hidden px-2 py-3 border-b flex justify-between items-start bg-white/60 shadow-sm backdrop-blur-lg">
+            <MobileSidebar />
+            <h1 className="ml-2 font-bold text-2xl">Al Quran </h1>
           </div>
 
-          <main className="flex-1 overflow-y-auto">{children}</main>
+          {/* Main content */}
+          <main className="flex-1 overflow-y-auto">
+            {children}
+          </main>
+
         </SettingsProvider>
+
       </body>
     </html>
   );
