@@ -29,7 +29,7 @@ export default function AppSidebar() {
           <Link
             key={s.number}
             href={`/surah/${s.number}`}
-            className="text-sm hover:bg-gray-100 p-2 rounded"
+            className="text-lg hover:bg-gray-100 p-2 rounded"
           >
             {s.number}. {s.englishName}
           </Link>
