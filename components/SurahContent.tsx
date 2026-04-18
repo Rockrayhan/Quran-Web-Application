@@ -1,6 +1,6 @@
 'use client';
 
-import { useSettings } from '@/hooks/useSettings';
+import { useSettings } from '@/context/SettingsContext';
 
 export default function SurahContent({ surah }: any) {
   const { arabicSize, translationSize, font } = useSettings();

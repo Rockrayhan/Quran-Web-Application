@@ -16,16 +16,16 @@ import {
 } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
-import { useSettings } from "@/hooks/useSettings";
+import { useSettings } from "@/context/SettingsContext";
 
 export default function SettingsPanel() {
   const {
     arabicSize,
     translationSize,
     font,
-    updateArabic,
-    updateTranslation,
-    updateFont,
+    setArabicSize,
+    setTranslationSize,
+    setFont,
   } = useSettings();
 
   return (
@@ -35,13 +35,14 @@ export default function SettingsPanel() {
       </SheetTrigger>
 
       <SheetContent side="right" className="space-y-6 p-5">
-        <SheetTitle className="border-gray-300 border-2 p-2 rounded-lg">Settings</SheetTitle>
-
+        <SheetTitle className="border-gray-300 border-2 p-2 rounded-lg">
+          Settings
+        </SheetTitle>
 
         {/* Font Select */}
         <div className="space-y-2">
           <Label>Arabic Font</Label>
-          <Select value={font} onValueChange={updateFont}>
+          <Select value={font} onValueChange={setFont}>
             <SelectTrigger>
               <SelectValue placeholder="Select font" />
             </SelectTrigger>
@@ -60,7 +61,7 @@ export default function SettingsPanel() {
             min={16}
             max={40}
             step={1}
-            onValueChange={(val) => updateArabic(val[0])}
+            onValueChange={(val) => setArabicSize(val[0])}
           />
         </div>
 
@@ -72,7 +73,7 @@ export default function SettingsPanel() {
             min={12}
             max={24}
             step={1}
-            onValueChange={(val) => updateTranslation(val[0])}
+            onValueChange={(val) => setTranslationSize(val[0])}
           />
         </div>
       </SheetContent>

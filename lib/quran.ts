@@ -7,12 +7,16 @@ export const getSurahById = (id: number): Surah | undefined =>
   quran.surahs.find((s) => s.number === id);
 
 export const searchAyahs = (query: string) => {
-  return quran.surahs.flatMap((surah: Surah) =>
+  if (!query.trim()) return [];
+
+  const q = query.toLowerCase();
+
+  return quran.surahs.flatMap((surah: any) =>
     surah.ayahs
-      .filter((ayah) =>
-        ayah.translation.toLowerCase().includes(query.toLowerCase())
+      .filter((ayah: any) =>
+        ayah.translation.toLowerCase().includes(q)
       )
-      .map((ayah) => ({
+      .map((ayah: any) => ({
         ...ayah,
         surahNumber: surah.number,
         surahName: surah.englishName,

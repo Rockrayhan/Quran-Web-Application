@@ -1,12 +1,14 @@
-import Link from 'next/link';
-import { getAllSurahs } from '@/lib/quran';
-
+import Link from "next/link";
+import { getAllSurahs } from "@/lib/quran";
+import SearchBar from "@/components/SearchBar";
 
 export default function Home() {
   const surahs = getAllSurahs();
 
   return (
     <div className="p-4 grid gap-4 md:grid-cols-2">
+      {/* Search */}
+      <SearchBar />
       {surahs.map((s) => (
         <Link key={s.number} href={`/surah/${s.number}`}>
           <div className="p-4 border rounded-xl hover:shadow-md transition">
